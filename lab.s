@@ -19,7 +19,14 @@
 
     .text
 
-# ---------------------------------------------------------------------
+    .globl max2
+max2:
+    cmp    %esi,%edi        # compare x with y (works out x - y)
+    jle    max2_done        # if x <= y, skip the assignment
+    mov    %edi,%esi        # y = x
+max2_done:
+    mov    %esi,%eax        # return y
+    ret# ---------------------------------------------------------------------
 # Part A1: the bigger one
 #
 #   int max2(int x, int y) {
@@ -30,14 +37,7 @@
 #   }
 #
 #   x arrives in %edi, y arrives in %esi.
-# ---------------------------------------------------------------------
-    .globl max2
-max2:
-    # TODO: replace the next line with your code.
-    mov    $0,%eax
-    ret
-
-# ---------------------------------------------------------------------
+---------------------------------------------------
 # Part A2: movie tickets
 #
 #   int ticket_price(int age) {
